@@ -1,0 +1,9 @@
+--type-add=ruby=.haml
+--type-add=ruby=.scss
+--type-add=ruby=.coffee
+--type-add=ruby=.c
+--ignore-dir=log
+--ignore-dir=documents
+--ignore-dir=vender
+--ignore-dir=tmp
+--ignore-dir=public
