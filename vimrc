@@ -9,8 +9,22 @@ call pathogen#helptags()
 " show line numbers
 set number
 
+" http://jeffkreeftmeijer.com/2012/relative-line-numbers-in-vim-for-super-fast-movement/
+function! NumberToggle()
+  if(&relativenumber == 1)
+    set number
+  else
+    set relativenumber
+  endif
+endfunc
+
+nnoremap <C-n> :call NumberToggle()<cr>
+
 " highlight search patterns
 set hls 
+
+" show the ruler
+set ruler
 
 " Use the same symbols as Textmate for tabstops and EOLs
 set listchars=tab:▸\ ,eol:¬
@@ -21,7 +35,7 @@ let mapleader=","
 " Shortcut to rapidly toggle 'set list'
 nmap <leader>0 :set list!<CR>
 
-" having said that...let's always show whitespace. 
+" having said that...let's always show whitespace.
 set list!
 
 " Invisitble character colors
@@ -32,7 +46,10 @@ highlight SpecialKey guifg=#4a4a59
 set noswapfile
 
 " select default colorscheme
-colorscheme vividchalk
+syntax enable
+set background=light
+let g:solarized_termcolors=256
+colorscheme solarized
 
 " kind of a catch-all to get indentation at 2 spaces. having trouble otherwise
 set softtabstop=2
