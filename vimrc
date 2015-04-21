@@ -6,22 +6,22 @@ filetype plugin indent on
 " build help tags
 call pathogen#helptags()
 
-" show line numbers
+" show line numbers (hybrid)
+set relativenumber
 set number
 
-" http://jeffkreeftmeijer.com/2012/relative-line-numbers-in-vim-for-super-fast-movement/
-function! NumberToggle()
-  if(&relativenumber == 1)
-    set number
-  else
-    set relativenumber
-  endif
-endfunc
+" easier quitting
+nnoremap <C-p> :q<cr>
 
-nnoremap <C-n> :call NumberToggle()<cr>
+" easier tabbing
+nnoremap <C-j> :tabp<cr>
+nnoremap <C-k> :tabn<cr>
 
 " highlight search patterns
-set hls 
+" set hls 
+
+" highlight current line
+set cursorline
 
 " show the ruler
 set ruler
@@ -69,7 +69,6 @@ nnoremap <c-u> viWUE
 set hidden
 
 " easy escape (stolen from FDL's .vimrc)
-inoremap jj <esc>
 inoremap jk <esc>
 
 " move through buffers
@@ -84,10 +83,18 @@ nnoremap ,, <C-w><C-w>
 " RSpec.vim mappings
 nnoremap <Leader>t :call RunCurrentSpecFile()<CR>
 nnoremap <Leader>s :call RunNearestSpec()<CR>
-nnoremap <Leader>l :call RunLastSpec()<CR>
-nnoremap <Leader>a :call RunAllSpecs()<CR>
 
-let g:rspec_command = "compiler rspec | set makeprg=zeus | make rspec {spec}"
+function! UseZeusForRspecCommand()
+  let g:rspec_command = "compiler rspec | set makeprg=zeus | make rspec {spec}"
+endfunc
+
+nnoremap <Leader>uz :call UseZeusForRspecCommand()<CR>
+
+function! NoZeusForRspecCommand()
+  let g:rspec_command = "!clear && echo rspec {spec} && rspec {spec}"
+endfunc
+
+nnoremap <Leader>ur :call NoZeusForRspecCommand()<CR>
 
 " Command-T mappings
 nnoremap <silent> <Leader>k :CommandT<CR>
