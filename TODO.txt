@@ -1,3 +1,0 @@
-Use fog & a script to automate creation (& deletion) of throw-away micro servers.
-
-Save one of those throw-away servers as an AMI.
