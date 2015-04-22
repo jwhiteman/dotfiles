@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# fight the urge to run this script as root.
+
 sudo apt-get update
 sudo apt-get -y install vim
 sudo apt-get -y install tmux
@@ -35,10 +37,12 @@ git clone git://github.com/tpope/vim-surround.git
 
 git clone https://github.com/kchmck/vim-coffee-script.git ~/.vim/bundle/vim-coffee
 
-git clone git://git.wincent.com/command-t.git bundle/command-t
-
-git clone git://git.wincent.com/command-t.git bundle/command-t
+# will need your vim compiled w/ ruby support.
+# git clone git://git.wincent.com/command-t.git
 
 cd ~
 sudo curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
-echo "consider changing your zsh theme to sporty_256"
+
+# some alterations to remind me I'm not local
+sed -i 's/robbyrussell/sporty_256/' ~/.zshrc
+sed -i 's/background=light/background=dark/' ~/.vimrc
