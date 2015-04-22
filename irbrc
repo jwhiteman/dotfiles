@@ -26,12 +26,13 @@ def connect_to_fog
   )
 end
 
+# 'ami-5189a661',
 def create_server
   connect_to_fog
 
   server = $fog.servers.create(
     :key_name           => 'lazyfucker',
-    :image_id           => 'ami-5189a661',
+    :image_id           => 'ami-6d31055d',
     :flavor_id          => 't2.micro',
     :security_group_ids => %w(sg-5e96463b)
   )
