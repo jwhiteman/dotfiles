@@ -11,7 +11,7 @@ set relativenumber
 set number
 
 " easier quitting
-nnoremap <C-p> :q<cr>
+nnoremap <C-p> <esc>:q<cr>
 
 " easier tabbing
 nnoremap <C-j> :tabp<cr>
@@ -117,3 +117,19 @@ set grepprg=ack\ --nogroup\ $*
 
 " nicer formatting for text and md files 
 autocmd Filetype markdown set nonumber
+autocmd BufRead,BufNewFile *.trc set filetype=strace
+
+" killing lines and words while editing
+inoremap <C-u> <esc>S
+inoremap <C-k> <esc>dawi
+
+" goin full orenstein
+map <leader>gs :Gstatus<cr>
+map <leader>gb :Gblame<cr>
+map <leader>gr :Gread<cr>
+map <leader>gw :Gwrite<cr>
+map <leader>gl :Glog<cr>
+map <leader>gd :Gdiff<cr>
+map <leader>gc :Gcommit<cr>
+
+map <leader>ta :tab all<cr>
