@@ -121,7 +121,7 @@ autocmd BufRead,BufNewFile *.trc set filetype=strace
 
 " killing lines and words while editing
 inoremap <C-u> <esc>S
-inoremap <C-k> <esc>dawi
+inoremap <C-k> <esc>dawa
 
 " goin full orenstein
 map <leader>gs :Gstatus<cr>
@@ -133,3 +133,10 @@ map <leader>gd :Gdiff<cr>
 map <leader>gc :Gcommit<cr>
 
 map <leader>ta :tab all<cr>
+
+" foldin'
+autocmd BufWinLeave *.* mkview
+autocmd BufWinEnter *.* silent loadview 
+
+map <leader>za zR<cr>
+map <leader>zc zM<cr>
