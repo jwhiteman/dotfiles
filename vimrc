@@ -1,3 +1,6 @@
+" this screws with line numbers
+"set nocompatible
+
 " back to pathogen.
 execute pathogen#infect()
 syntax on
@@ -16,9 +19,6 @@ nnoremap <C-p> <esc>:q<cr>
 " easier tabbing
 nnoremap <C-j> :tabp<cr>
 nnoremap <C-k> :tabn<cr>
-
-" highlight search patterns
-" set hls 
 
 " highlight current line
 set cursorline
@@ -61,10 +61,7 @@ set expandtab
 " move lines up and down (buggy...needs work)
 nnoremap - ddp
 nnoremap _ ddkP
-
-" easy capitalization
-inoremap <c-u> <esc>viWUA
-nnoremap <c-u> viWUE
+" vnoremap - dkPvap
 
 " allow hidden buffers (aka moving away from an edited but yet-unsaved buffer)
 set hidden
@@ -99,14 +96,10 @@ nnoremap <Leader>ur :call NoZeusForRspecCommand()<CR>
 
 " Command-T mappings
 nnoremap <silent> <Leader>k :CommandT<CR>
-nnoremap <silent> <Leader>b :CommandTBuffer<CR>
 
 " Abbreviations
 ab bp binding.pry
 ab teh the
-
-" set 80-character column
-set colorcolumn=80
 
 " easy .vimrc editing
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
@@ -123,6 +116,10 @@ autocmd BufRead,BufNewFile *.trc set filetype=strace
 inoremap <C-u> <esc>S
 inoremap <C-k> <esc>dawa
 
+" elixir experiment
+"autocmd BufRead,BufNewFile *.ex nnoremap <C-m> :!mix test<cr>
+"autocmd BufRead,BufNewFile *.exs nnoremap <C-m> :!mix test<cr>
+
 " goin full orenstein
 map <leader>gs :Gstatus<cr>
 map <leader>gb :Gblame<cr>
@@ -134,9 +131,24 @@ map <leader>gc :Gcommit<cr>
 
 map <leader>ta :tab all<cr>
 
-" foldin'
-autocmd BufWinLeave *.* mkview
-autocmd BufWinEnter *.* silent loadview 
+" foldin' - https://github.com/tpope/vim-rails/issues/25
+" autocmd BufWinLeave *.* mkview
+" autocmd BufWinEnter *.* silent loadview 
+map <leader>lv :loadview<cr>
 
 map <leader>za zR<cr>
 map <leader>zc zM<cr>
+
+" include branch name in status line:
+set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
+
+" rails
+nnoremap <leader>av :AV<cr>
+nnoremap <leader>at :AT<cr>
+nnoremap <leader>rv :RV<cr>
+nnoremap <leader>rt :RT<cr>
+
+" case insensitive search
+set ignorecase
+
+nnoremap <leader>ma :!mate %<cr>
