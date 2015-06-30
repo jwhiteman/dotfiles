@@ -9,11 +9,15 @@ class Array
   end
 end
 
-include Rails.application.routes.url_helpers rescue nil
+begin
+  include Rails.application.routes.url_helpers
+  default_url_options[:host] = "localhost"
+rescue
+  nil
+end
 
 require 'rubygems'
 require 'interactive_editor'
-require 'fog'
 require 'fog'
 
 # http://grosser.it/2011/04/09/creating-a-ec2-micro-instance-via-fog/
@@ -40,7 +44,8 @@ def create_server
   # wait for it to get online
   server.wait_for { print "."; ready? }
 
-  `echo ssh -i lazyfucker.pem ubuntu@#{server.public_ip_address} | pbcopy` rescue nil
+  `echo ssh -i ~/.keys/lazyfucker.pem ubuntu@#{server.public_ip_address} | pbcopy` rescue nil
+  puts "ssh info has been copied to your clipboard"
 
   server
 end
