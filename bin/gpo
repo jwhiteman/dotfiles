@@ -1,0 +1,10 @@
+#!/bin/bash
+#
+# Author: Jim Whiteman <jimtron9000@gmail.com>
+#
+# git push origin /current-branch/ without copy-pasting the branch name
+#
+
+BRANCH="$(git rev-parse --abbrev-ref HEAD)"
+
+git push origin $BRANCH

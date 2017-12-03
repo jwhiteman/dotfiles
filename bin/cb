@@ -1,0 +1,10 @@
+#!/bin/bash
+#
+# Author: Jim Whiteman <jimtron9000@gmail.com>
+#
+# Change branch using substring
+#
+
+set -e
+
+git branch | egrep $1 | head -1 | sed 's/* //' | xargs git checkout

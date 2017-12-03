@@ -1,0 +1,15 @@
+#!/bin/bash
+#
+# Author: Jim Whiteman <jimtron9000@gmail.com>
+#
+# Open the files from my last commit in Vim
+#
+
+set -e
+
+# TODO: use plumbing commands?
+REV="$(git --no-pager log --no-merges --author='Jim' -1 --format='%h')"
+
+FILES="$(git diff-tree --no-commit-id --name-only -r ${REV} | tr '\n' ' ')"
+
+vim ${FILES}
