@@ -162,7 +162,7 @@ nnoremap <leader>at :AT<cr>
 nnoremap <leader>rv :RV<cr>
 nnoremap <leader>rt :RT<cr>
 
-" TODO: run only individual test?
+" TODO: run only individual test? switch to `m` ?
 nnoremap <leader>tt :!ruby -Itest %<cr>
 
 " case insensitive search
