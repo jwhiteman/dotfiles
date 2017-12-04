@@ -1,4 +1,4 @@
-" this screws with line numbers
+" this screws with line numbers?
 "set nocompatible
 
 " back to pathogen.
@@ -19,11 +19,6 @@ nnoremap <C-p> <esc>:q<cr>
 " easier tabbing
 nnoremap <C-j> :tabp<cr>
 nnoremap <C-k> :tabn<cr>
-
-" experiment moving to the ends of a line
-" fucks up motions; btw - this should probably be under version control
-" nnoremap 1 ^
-" nnoremap 9 $
 
 " highlight current line
 set cursorline
@@ -52,6 +47,7 @@ set noswapfile
 
 " select default colorscheme
 syntax enable
+
 " consider changing background to dark if you are operating on another server
 set background=light
 let g:solarized_termcolors=256
@@ -66,7 +62,6 @@ set expandtab
 " move lines up and down (buggy...needs work)
 nnoremap - ddp
 nnoremap _ ddkP
-" vnoremap - dkPvap
 
 " allow hidden buffers (aka moving away from an edited but yet-unsaved buffer)
 set hidden
@@ -83,25 +78,13 @@ nnoremap ,v <C-w>v
 nnoremap ,h <C-w>s
 nnoremap ,, <C-w><C-w>
 
-" RSpec.vim mappings
+" rspec.vim mappings
 nnoremap <Leader>t :call RunCurrentSpecFile()<CR>
 nnoremap <Leader>s :call RunNearestSpec()<CR>
 
 " vim-extest mappings
 map <leader>et :ExTestRunFile<CR>
 map <leader>es :ExTestRunCurrentOrLast<CR>
-
-function! UseZeusForRspecCommand()
-  let g:rspec_command = "compiler rspec | set makeprg=zeus | make rspec {spec}"
-endfunc
-
-nnoremap <Leader>uz :call UseZeusForRspecCommand()<CR>
-
-function! NoZeusForRspecCommand()
-  let g:rspec_command = "!clear && echo rspec {spec} && rspec {spec}"
-endfunc
-
-nnoremap <Leader>ur :call NoZeusForRspecCommand()<CR>
 
 " Command-T mappings
 nnoremap <silent> <Leader>k :CommandT<CR>
@@ -124,15 +107,7 @@ autocmd BufRead,BufNewFile *.es6 set filetype=javascript
 autocmd BufRead,BufNewFile *.nghtml set filetype=html
 autocmd BufRead,BufNewFile *.jbuilder set filetype=ruby
 
-" killing lines and words while editing
-inoremap <C-u> <esc>S
-inoremap <C-k> <esc>dawa
-
-" elixir experiment
-"autocmd BufRead,BufNewFile *.ex nnoremap <C-m> :!mix test<cr>
-"autocmd BufRead,BufNewFile *.exs nnoremap <C-m> :!mix test<cr>
-
-" goin' full orenstein
+" fugitive
 map <leader>gs :Gstatus<cr>
 map <leader>gb :Gblame<cr>
 map <leader>gr :Gread<cr>
@@ -140,15 +115,13 @@ map <leader>gw :Gwrite<cr>
 map <leader>gd :Gdiff<cr>
 map <leader>gc :Gcommit<cr>
 
+" open tabs en masse
 map <leader>ta :tab all<cr>
 
 " foldin' - https://github.com/tpope/vim-rails/issues/25
 " autocmd BufWinLeave *.* mkview
 " autocmd BufWinEnter *.* silent loadview 
 map <leader>lv :loadview<cr>
-
-" map <leader>za zR<cr>
-" map <leader>zc zM<cr>
 
 " https://github.com/junegunn/gv.vim.git
 nnoremap <leader>gv :GV<cr>
@@ -178,6 +151,6 @@ set wildignore+=*.beam,*/_build/*,*/node_modules/*
 map <leader>gor :!go run %<cr>
 map <leader>gof :!go fmt %<cr>
 
-" hackish; insert the formatted story id at the top of the commit message
+" HACK: insert the formatted story id
 nnoremap <leader>9 :0r !bid<cr> A
 
