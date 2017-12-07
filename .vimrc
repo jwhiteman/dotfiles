@@ -153,4 +153,3 @@ map <leader>gof :!go fmt %<cr>
 
 " HACK: insert the formatted story id
 nnoremap <leader>9 :0r !bid<cr> A
-
