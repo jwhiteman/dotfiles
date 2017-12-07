@@ -1,10 +1,6 @@
 #!/bin/bash
-# 
-# Author: Jim Whiteman <jimtron9000@gmail.com>
-#
-# Get a formatted version of the branch id
-# jw-123-some-branch -> [#123]
-#
+
+# (b)ranch (id)
 
 set -e
 

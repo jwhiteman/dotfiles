@@ -1,9 +1,6 @@
 #!/bin/bash
 #
-# Author: Jim Whiteman <jimtron9000@gmail.com>
-#
-# Open the files from my last commit in Vim
-#
+# (l)ast (c)ommit
 
 set -e
 

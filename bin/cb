@@ -1,9 +1,6 @@
 #!/bin/bash
 #
-# Author: Jim Whiteman <jimtron9000@gmail.com>
-#
-# Change branch using substring
-#
+# (c)hange (b)ranch
 
 set -e
 
