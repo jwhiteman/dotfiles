@@ -1,14 +1,7 @@
 #!/bin/bash
-#
-# Written by Corey Haines
-# Scriptified by Gary Bernhardt
-#
-# Put this anywhere on your $PATH (~/bin is recommended). Then git will see it
-# and you'll be able to do `git churn`.
-#
-# Show churn for whole repo:
-#   $ git churn
-#
+
+# Corey Haines + Gary Bernhardt
+
 # Show churn for specific directories:
 #   $ git churn app lib
 #
