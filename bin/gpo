@@ -1,5 +1,5 @@
 #!/bin/bash
-#
+
 # (g)it (p)ush (o)rigin
 
 BRANCH="$(git rev-parse --abbrev-ref HEAD)"
