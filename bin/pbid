@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# (p)rint (b)ranch (id)
+
+set -e
+
+bid=$(bid)
+
+echo "[#$bid] "
