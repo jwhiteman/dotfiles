@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# (t)his (w)eek
+
+set -e
+
+git fetch > /dev/null 2>&1
+
+echo "In the past seven days...\n"
+
+for dev in $(ualnw)
+do
+  echo "$dev:"
+  git --no-pager log \
+      --all \
+      --author="$dev" \
+      --oneline \
+      --since="1.week.ago" \
+      --no-merges \
+      --decorate \
+      --graph
+  echo
+done
+
+cd $OLDPWD
