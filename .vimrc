@@ -48,7 +48,7 @@ set noswapfile
 " select default colorscheme
 syntax enable
 
-" consider changing background to dark if you are operating on another server
+" background for solarized
 set background=light
 let g:solarized_termcolors=256
 colorscheme solarized

@@ -2,6 +2,6 @@
 
 # (g)it (p)ush (o)rigin
 
-BRANCH="$(git rev-parse --abbrev-ref HEAD)"
+BRANCH="$(gbr)"
 
 git push origin $BRANCH

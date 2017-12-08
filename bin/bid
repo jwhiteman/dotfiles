@@ -4,6 +4,6 @@
 
 set -e
 
-story_id=$(git rev-parse --abbrev-ref HEAD | cut -d '-' -f2)
+story_id=$(cbr | cut -d '-' -f2)
 
 echo "[#$story_id] "

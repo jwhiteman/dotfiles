@@ -12,7 +12,7 @@ alias td="wk; vim TODO.md"
 alias par="cd ~/Work/par8o"
 alias pat="wk; cd pat"
 
-alias e="egrep -iIre"
+alias e="egrep --exclude-dir log -iIre"
 
 plugins=(git)
 
