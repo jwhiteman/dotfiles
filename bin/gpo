@@ -2,6 +2,8 @@
 
 # (g)it (p)ush (o)rigin
 
-BRANCH="$(gbr)"
+set -e
+
+BRANCH="$(cbr)"
 
 git push origin $BRANCH
