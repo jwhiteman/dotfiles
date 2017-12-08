@@ -1,0 +1,34 @@
+#!/bin/bash
+
+# (n)umber (l)ines (r)eport
+
+set -e
+
+function sumstats() {
+  awk '{s+=$1; t+=$2;} END {printf "\t+%s,\t-%s\n",s,t}'
+}
+
+function getstats() {
+  git --no-pager log \
+      --all \
+      --since="$1" \
+      --author="$2" \
+      --format=format: --numstat
+}
+
+git fetch
+
+for dev in $(ualnw)
+do
+  echo "For $dev:"
+  declare -a times=("midnight" "3.days.ago" "1.week.ago" "1.month.ago")
+  for time in "${times[@]}"
+  do
+    result=$(getstats $time $dev | sumstats)
+
+    echo "  $time: $result"
+  done
+  echo
+done
+
+cd $OLDPWD
