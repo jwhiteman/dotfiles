@@ -7,10 +7,7 @@ export EDITOR
 
 alias cdk="cd ~/Desktop"
 alias o="open ."
-alias wk="cd ~/Work"
 alias td="wk; vim TODO.md"
-alias par="cd ~/Work/par8o"
-alias pat="wk; cd pat"
 
 alias e="egrep --exclude-dir log -iIre"
 
