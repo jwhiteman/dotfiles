@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# (c)urrent (br)anch
+
+git rev-parse --abbrev-ref HEAD
