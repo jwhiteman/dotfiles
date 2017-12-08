@@ -4,6 +4,4 @@
 
 set -e
 
-story_id=$(cbr | cut -d '-' -f2)
-
-echo "[#$story_id] "
+cbr | cut -d '-' -f2

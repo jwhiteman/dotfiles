@@ -4,9 +4,16 @@
 
 set -e
 
-# TODO: use plumbing commands?
-REV="$(git --no-pager log --no-merges --author='Jim' -1 --format='%h')"
+function lastrev() {
+  git --no-pager log --no-merges --author="$1" -1 --format="%h"
+}
 
-FILES="$(git diff-tree --no-commit-id --name-only -r ${REV} | tr '\n' ' ')"
+function filesforrev() {
+  git diff-tree --no-commit-id --name-only -r $1
+}
 
-vim ${FILES}
+me="$(git config user.email)"
+rev="$(lastrev $me)"
+files="$(filesforrev $rev | tr '\n' ' ')"
+
+vim ${files}
