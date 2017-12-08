@@ -25,9 +25,6 @@ export CPPFLAGS="-I/usr/local/opt/mysql@5.6/include"
 . $HOME/.asdf/asdf.sh
 . $HOME/.asdf/completions/asdf.bash
 
-# PAT
-export PAT_LOG_LEVEL="info"
-
 # GO
 export GOPATH=$HOME/.go
 export PATH=$PATH:$GOPATH/bin
