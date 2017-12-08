@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# (u)nique (a)uthors (l)ast (n) (w)weeks
+
+set -e
+
+git log --all --since="6.weeks.ago" --no-merges --oneline --format="%ae" | sort | uniq | sort
