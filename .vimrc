@@ -135,8 +135,13 @@ nnoremap <leader>at :AT<cr>
 nnoremap <leader>rv :RV<cr>
 nnoremap <leader>rt :RT<cr>
 
-" TODO: run only individual test? switch to `m` ?
+" ruby xunit helpers
+function! RunNearestTest()
+  execute ":!m " . @% . ":" . line(".")
+endfunction
+
 nnoremap <leader>tt :!ruby -Itest %<cr>
+nnoremap <leader>ts :call RunNearestTest()<cr>
 
 " case insensitive search
 set ignorecase
@@ -152,4 +157,4 @@ map <leader>gor :!go run %<cr>
 map <leader>gof :!go fmt %<cr>
 
 " HACK: insert the formatted story id
-nnoremap <leader>9 :0r !bid<cr> A
+nnoremap <leader>9 :0r !pbid<cr> A
