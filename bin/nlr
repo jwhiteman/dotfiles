@@ -9,7 +9,7 @@ function sumstats() {
 }
 
 function getstats() {
-  git --no-pager log \
+  git --no-pager log origin \
       --all \
       --since="$1" \
       --author="$2" \

@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# (v)im (g)it (st)atus
+
+set -e
+
+eval "vim $(git status | grep modified | cut -d ':' -f2 | xargs)"

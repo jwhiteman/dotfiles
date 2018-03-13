@@ -1,5 +1,4 @@
-" this screws with line numbers?
-"set nocompatible
+set nocompatible
 
 " back to pathogen.
 execute pathogen#infect()
@@ -158,3 +157,9 @@ map <leader>gof :!go fmt %<cr>
 
 " HACK: insert the formatted story id
 nnoremap <leader>9 :0r !pbid<cr> A
+
+" spellin'
+setlocal spell
+
+" rubocop current file
+nnoremap <leader>rc :!rubocop %<cr>
