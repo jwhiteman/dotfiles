@@ -8,7 +8,7 @@
 " C-u - scroll up (fast)
 " C-i - (*) same as tab (?)
 " C-o - go to N older entry in jump list (?)
-" C-p - [OVERRIDE] same as :q
+" C-p - [OVERRIDE] :bd
 "     - original: same as 'k'
 "     - original: also for control flow (?)
 " C-[ - (*) not used
@@ -17,12 +17,13 @@
 " C-a - add N to number at/after cursor
 " C-s - used for terminal control flow (?)
 " C-d - scroll down (fast)
-" C-f - (*) scroll N screens forwards
+" C-f - [OVERRIDE] :Buffers (vim-fzf)
+"       original: scroll N screens forwards
 " C-g - (*) display current file name and position
 " C-h - (*) same as 'h'
-" C-j - [OVERRIDE] tab left
+" C-j - [OVERRIDE] :bprev
 "     - original: same as 'j'
-" C-k - [OVERRIDE] tab right
+" C-k - [OVERRIDE] :bnext
 "     - original: unused
 " C-l - redraw screen
 "
@@ -54,11 +55,12 @@ set number
 set relativenumber
 
 " easier quitting
-nnoremap <C-p> <esc>:q<cr>
+" nnoremap <C-p> <esc>:q<cr>
+nnoremap <C-p> <esc>:bd<cr>
 
-" easier tabbing
-nnoremap <C-j> :tabp<cr>
-nnoremap <C-k> :tabn<cr>
+" easier cycling through buffers
+nnoremap <C-j> :bprev<cr>
+nnoremap <C-k> :bnext<cr>
 
 " highlight current line
 set cursorline
@@ -100,42 +102,43 @@ set shiftwidth=2
 set tabstop=2
 set expandtab
 
-" allow hidden buffers (aka moving away from an edited but yet-unsaved buffer)
+" allow hidden buffers (moving away from an edited but yet-unsaved buffer)
 set hidden
 
 " better escape
 inoremap jk <esc>
 
-" move through buffers
-" TODO: improve this
-nnoremap <silent> [b :bprevious<CR>
-nnoremap <silent> ]b :bnext<CR>
-
 " cycle through spits
 nnoremap ,, <C-w><C-w>
 
-" rspec.vim mappings
-nnoremap <Leader>t :call RunCurrentSpecFile()<CR>
-nnoremap <Leader>s :call RunNearestSpec()<CR>
+" rspec.vim:
+" (s)pec (f)ile
+" (s)pec (t)est
+nnoremap <Leader>sf :call RunCurrentSpecFile()<CR>
+nnoremap <Leader>st :call RunNearestSpec()<CR>
 
-" vim-extest mappings
-map <leader>et :ExTestRunFile<CR>
-map <leader>es :ExTestRunCurrentOrLast<CR>
+" vim-extest:
+" (e)lixir (f)ile
+" (e)lixir (t)est
+map <leader>ef :ExTestRunFile<CR>
+map <leader>et :ExTestRunCurrentOrLast<CR>
 
-" ruby xunit helpers
+" ruby xunit:
+" (r)uby (f)ile
+" (r)uby (t)est
+nnoremap <leader>rf :!ruby -Itest %<cr>
+nnoremap <leader>rt :call RunNearestTest()<cr>
+
 function! RunNearestTest()
   execute ":!m " . @% . ":" . line(".")
 endfunction
-
-nnoremap <leader>tt :!ruby -Itest %<cr>
-nnoremap <leader>ts :call RunNearestTest()<cr>
 
 " search
 nnoremap <silent> <Leader>k :Files<CR>
 
 " Abbreviations
-ab bp binding.pry
-ab teh the
+ia bp binding.pry
+ia teh the
 
 " easy .vimrc editing
 nnoremap <leader>ev :vsplit ~/.vimrc<cr>
@@ -157,9 +160,6 @@ map <leader>gs :Gstatus<cr>
 map <leader>gb :Gblame<cr>
 map <leader>gc :Gcommit<cr>
 
-" open tabs en masse
-map <leader>ta :tab all<cr>
-
 " https://github.com/junegunn/gv.vim.git
 nnoremap <leader>gv :GV!<cr>
 
@@ -173,15 +173,10 @@ set ignorecase
 " TODO: still needed?
 set wildignore+=*.beam,*/_build/*,*/node_modules/*
 
-" golang
-map <leader>gor :!go run %<cr>
-map <leader>gof :!go fmt %<cr>
-
 " HACK: insert the formatted story id
 nnoremap <leader>9 :0r !pbid<cr> A
 
-" spellin'
-" TODO: fix this
+" spellcheck
 nnoremap <leader>ss :set spell!<CR>
 
 " todos
@@ -202,3 +197,6 @@ set rtp+=/usr/local/opt/fzf
 
 " rails-vim toggle alternate file (see projections.json)
 nnoremap <BS> :A<CR>
+
+" vim-fzf
+nnoremap <C-f> :Buffers<CR>
