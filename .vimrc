@@ -189,7 +189,8 @@ nnoremap <leader>9 :0r !pbid<cr> A
 nnoremap <leader>ss :set spell!<CR>
 
 " todos
-nnoremap <leader>td :tabe ~/Documents/Text/todo.md<CR>
+nnoremap <leader>td :vsplit ~/Documents/Text/todo.md<CR>
+nnoremap <leader>wd :vsplit ~/Documents/Text/work-todo.md<CR>
 
 " rubocop current file
 nnoremap <leader>rc :!rubocop %<cr>
