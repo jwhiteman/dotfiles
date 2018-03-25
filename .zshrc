@@ -35,3 +35,9 @@ export PATH=$PATH:$HOME/bin
 source ~/.zsh-secrets
 source ~/.zsh-vim
 source ~/.zsh-theme
+
+vimfzf() {
+  vim $(fzf)
+}
+
+alias v="vimfzf"

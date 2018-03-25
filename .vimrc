@@ -35,6 +35,8 @@
 " C-n - (*) same as j
 " C-m - (*) same as <CR>
 " 
+" <C-@> (*) not used (aka 2)
+" <C-_> (*) not used (aka -)
 " <CR> - (*) cursor to the first CHAR N lines lower
 " <TAB> - go to N newer entry in jump list (?)
 " <BS> - OVERRIDE: :A (rails-vim)
@@ -54,8 +56,7 @@ call pathogen#helptags()
 set number
 set relativenumber
 
-" easier quitting
-" nnoremap <C-p> <esc>:q<cr>
+" delete buffer
 nnoremap <C-p> <esc>:bd<cr>
 
 " easier cycling through buffers
@@ -160,9 +161,6 @@ map <leader>gs :Gstatus<cr>
 map <leader>gb :Gblame<cr>
 map <leader>gc :Gcommit<cr>
 
-" https://github.com/junegunn/gv.vim.git
-nnoremap <leader>gv :GV!<cr>
-
 " include branch name in status line:
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 
@@ -182,6 +180,7 @@ nnoremap <leader>ss :set spell!<CR>
 " todos
 nnoremap <leader>td :vsplit ~/Documents/Text/todo.md<CR>
 nnoremap <leader>wd :vsplit ~/Documents/Text/work-todo.md<CR>
+nnoremap <leader>le :vsplit ~/Documents/Text/learning.md<CR>
 
 " rubocop current file
 nnoremap <leader>rc :!rubocop %<cr>
