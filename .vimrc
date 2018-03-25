@@ -36,7 +36,9 @@
 " 
 " <CR> - (*) cursor to the first CHAR N lines lower
 " <TAB> - go to N newer entry in jump list (?)
-" <BS> - (*) same as 'h'
+" <BS> - OVERRIDE: :A (rails-vim)
+"      - original: same as 'h'
+" <Space> - (*) same as 'l'
 set nocompatible
 
 " back to pathogen.
