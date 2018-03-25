@@ -1,3 +1,42 @@
+" NORMAL MODE: (see :help index)
+" C-q - terminal control flow (?) see: https://is.gd/6vW1PO
+" C-w - window commands
+" C-e - scroll up (chill)
+" C-r - redo
+" C-t - ctag return
+" C-y - scroll down (chill)
+" C-u - scroll up (fast)
+" C-i - (*) same as tab (?)
+" C-o - go to N older entry in jump list (?)
+" C-p - [OVERRIDE] same as :q
+"     - original: same as 'k'
+"     - original: also for control flow (?)
+" C-[ - (*) not used
+" C-] - go to tag
+"
+" C-a - add N to number at/after cursor
+" C-s - used for terminal control flow (?)
+" C-d - scroll down (fast)
+" C-f - (*) scroll N screens forwards
+" C-g - (*) display current file name and position
+" C-h - (*) same as 'h'
+" C-j - [OVERRIDE] tab left
+"     - original: same as 'j'
+" C-k - [OVERRIDE] tab right
+"     - original: unused
+" C-l - redraw screen
+"
+" C-z - suspend
+" C-x - subtract N to number at/after cursor
+" C-c - interrupt current (search) command (?)
+" C-v - start blockwise visual mode
+" C-b - (*) scroll N screens backwards
+" C-n - (*) same as j
+" C-m - (*) same as <CR>
+" 
+" <CR> - (*) cursor to the first CHAR N lines lower
+" <TAB> - go to N newer entry in jump list (?)
+" <BS> - (*) same as 'h'
 set nocompatible
 
 " back to pathogen.
@@ -162,4 +201,5 @@ set colorcolumn=80
 " make fvf work
 set rtp+=/usr/local/opt/fzf
 
-nnoremap <C-f> :A<CR>
+" rails-vim toggle alternate file (see projections.json)
+nnoremap <BS> :A<CR>
