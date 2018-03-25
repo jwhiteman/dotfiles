@@ -1,0 +1,66 @@
+{
+  "app/models/*.rb": {
+    "command": "model",
+    "affinity": "model",
+    "alternate": "unit/models/%s_test.rb",
+    "related": "db/schema.rb#%p"
+  },
+
+  "test/unit/models/*_test.rb": {
+    "alternate": "app/models/%s.rb"
+  },
+
+  "app/interactors/*.rb": {
+    "command": "interactor",
+    "alternate": "unit/interactors/%s_test.rb"
+  },
+
+  "test/unit/interactors/*_test.rb": {
+    "alternate": "app/interactors/%s.rb"
+  },
+
+  "app/importers/*.rb": {
+    "command": "importer",
+    "alternate": "unit/importers/%s_test.rb"
+  },
+
+  "test/unit/importers/*_test.rb": {
+    "alternate": "app/importers/%s.rb"
+  },
+
+  "app/gateways/*.rb": {
+    "command": "gateway",
+    "alternate": "unit/gateways/%s_test.rb"
+  },
+
+  "test/unit/gateways/*_test.rb": {
+    "alternate": "app/gateways/%s.rb"
+  },
+
+  "app/jobs/*.rb": {
+    "command": "job",
+    "alternate": "unit/jobs/%s_test.rb"
+  },
+
+  "test/unit/jobs/*_test.rb": {
+    "alternate": "app/jobs/%s.rb"
+  },
+
+  "app/presenters/*.rb": {
+    "command": "presenter",
+    "alternate": "unit/presenters/%s_test.rb"
+  },
+
+  "test/unit/presenters/*_test.rb": {
+    "alternate": "app/presenters/%s.rb"
+  },
+
+  "app/services/*.rb": {
+    "command": "service",
+    "alternate": "unit/services/%s_test.rb"
+  },
+
+  "test/unit/services/*_test.rb": {
+    "alternate": "app/services/%s.rb"
+  }
+}
