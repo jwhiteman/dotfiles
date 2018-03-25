@@ -66,11 +66,11 @@ set cursorline
 " show the ruler
 set ruler
 
-" Use the same symbols as Textmate for tabstops and EOLs
+" use the same symbols as textmate for tabstops and eols
 set listchars=tab:▸\ ,eol:¬
 
 " change mapleader to something less carpal tunnel inducing
-let mapleader=","
+let mapleader=" "
 
 " Shortcut to rapidly toggle 'set list'
 nmap <leader>0 :set list!<CR>
@@ -92,7 +92,7 @@ syntax enable
 set background=dark
 set t_Co=256
 let g:solarized_termcolors=256
-colorscheme PaperColor
+colorscheme grayorange
 
 " kind of a catch-all to get indentation at 2 spaces. having trouble otherwise
 set softtabstop=2
@@ -168,10 +168,6 @@ set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 
 " case insensitive search
 set ignorecase
-
-" open current file in TextMate
-" TODO: visual block to pbcopy?
-nnoremap <leader>ma :!mate %<cr>
 
 " plz don't slow my search down
 " TODO: still needed?
