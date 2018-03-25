@@ -1,0 +1,9 @@
+log/
+documents/
+vendor/
+tmp/
+public/
+node_modules/
+path_flow/
+_build/
+docker/

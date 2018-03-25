@@ -10,3 +10,6 @@ begin
 rescue
   nil
 end
+
+require 'interactive_editor'
+alias :v :vim

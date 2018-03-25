@@ -9,8 +9,8 @@ filetype plugin indent on
 call pathogen#helptags()
 
 " show line numbers (hybrid)
-set relativenumber
 set number
+set relativenumber
 
 " easier quitting
 nnoremap <C-p> <esc>:q<cr>
@@ -47,10 +47,11 @@ set noswapfile
 " select default colorscheme
 syntax enable
 
-" background for solarized
-set background=light
+" theme
+set background=dark
+set t_Co=256
 let g:solarized_termcolors=256
-colorscheme solarized
+colorscheme PaperColor
 
 " kind of a catch-all to get indentation at 2 spaces. having trouble otherwise
 set softtabstop=2
@@ -58,23 +59,18 @@ set shiftwidth=2
 set tabstop=2
 set expandtab
 
-" move lines up and down (buggy...needs work)
-nnoremap - ddp
-nnoremap _ ddkP
-
 " allow hidden buffers (aka moving away from an edited but yet-unsaved buffer)
 set hidden
 
-" easy escape (stolen from FDL's .vimrc)
+" better escape
 inoremap jk <esc>
 
 " move through buffers
+" TODO: improve this
 nnoremap <silent> [b :bprevious<CR>
 nnoremap <silent> ]b :bnext<CR>
 
-" easier splits
-nnoremap ,v <C-w>v
-nnoremap ,h <C-w>s
+" cycle through spits
 nnoremap ,, <C-w><C-w>
 
 " rspec.vim mappings
@@ -85,8 +81,16 @@ nnoremap <Leader>s :call RunNearestSpec()<CR>
 map <leader>et :ExTestRunFile<CR>
 map <leader>es :ExTestRunCurrentOrLast<CR>
 
-" Command-T mappings
-nnoremap <silent> <Leader>k :CommandT<CR>
+" ruby xunit helpers
+function! RunNearestTest()
+  execute ":!m " . @% . ":" . line(".")
+endfunction
+
+nnoremap <leader>tt :!ruby -Itest %<cr>
+nnoremap <leader>ts :call RunNearestTest()<cr>
+
+" search
+nnoremap <silent> <Leader>k :Files<CR>
 
 " Abbreviations
 ab bp binding.pry
@@ -97,6 +101,7 @@ nnoremap <leader>ev :vsplit ~/.vimrc<cr>
 nnoremap <leader>sv :source ~/.vimrc<cr>
 
 " search
+" TODO: is this still needed?
 set grepprg=ack\ --nogroup\ $*
 
 " nicer formatting for text and md files 
@@ -109,46 +114,26 @@ autocmd BufRead,BufNewFile *.jbuilder set filetype=ruby
 " fugitive
 map <leader>gs :Gstatus<cr>
 map <leader>gb :Gblame<cr>
-map <leader>gr :Gread<cr>
-map <leader>gw :Gwrite<cr>
-map <leader>gd :Gdiff<cr>
 map <leader>gc :Gcommit<cr>
 
 " open tabs en masse
 map <leader>ta :tab all<cr>
 
-" foldin' - https://github.com/tpope/vim-rails/issues/25
-" autocmd BufWinLeave *.* mkview
-" autocmd BufWinEnter *.* silent loadview 
-map <leader>lv :loadview<cr>
-
 " https://github.com/junegunn/gv.vim.git
-nnoremap <leader>gv :GV<cr>
+nnoremap <leader>gv :GV!<cr>
 
 " include branch name in status line:
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
-
-" rails
-nnoremap <leader>av :AV<cr>
-nnoremap <leader>at :AT<cr>
-nnoremap <leader>rv :RV<cr>
-nnoremap <leader>rt :RT<cr>
-
-" ruby xunit helpers
-function! RunNearestTest()
-  execute ":!m " . @% . ":" . line(".")
-endfunction
-
-nnoremap <leader>tt :!ruby -Itest %<cr>
-nnoremap <leader>ts :call RunNearestTest()<cr>
 
 " case insensitive search
 set ignorecase
 
 " open current file in TextMate
+" TODO: visual block to pbcopy?
 nnoremap <leader>ma :!mate %<cr>
 
 " plz don't slow my search down
+" TODO: still needed?
 set wildignore+=*.beam,*/_build/*,*/node_modules/*
 
 " golang
@@ -159,7 +144,22 @@ map <leader>gof :!go fmt %<cr>
 nnoremap <leader>9 :0r !pbid<cr> A
 
 " spellin'
-setlocal spell
+" TODO: fix this
+nnoremap <leader>ss :set spell!<CR>
+
+" todos
+nnoremap <leader>td :tabe ~/Documents/Text/todo.md<CR>
 
 " rubocop current file
 nnoremap <leader>rc :!rubocop %<cr>
+
+" TODO: can't remember what this is for. airline?
+set laststatus=2
+
+" line to show where column 80 is
+set colorcolumn=80
+
+" make fvf work
+set rtp+=/usr/local/opt/fzf
+
+nnoremap <C-f> :A<CR>
