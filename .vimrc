@@ -8,7 +8,7 @@
 " C-u - scroll up (fast)
 " C-i - (*) same as tab (?)
 " C-o - go to N older entry in jump list (?)
-" C-p - [OVERRIDE] :bd
+" C-p - [OVERRIDE] :bd!
 "     - original: same as 'k'
 "     - original: also for control flow (?)
 " C-[ - (*) not used
@@ -57,7 +57,7 @@ set number
 set relativenumber
 
 " delete buffer
-nnoremap <C-p> <esc>:bd<cr>
+nnoremap <C-p> <esc>:bd!<cr>
 
 " easier cycling through buffers
 nnoremap <C-j> :bprev<cr>
@@ -179,7 +179,7 @@ nnoremap <leader>ss :set spell!<CR>
 
 " todos
 nnoremap <leader>td :vsplit ~/Documents/Text/todo.md<CR>
-nnoremap <leader>wd :vsplit ~/Documents/Text/work-todo.md<CR>
+nnoremap <leader>wtd :vsplit ~/Documents/Text/work-todo.md<CR>
 nnoremap <leader>le :vsplit ~/Documents/Text/learning.md<CR>
 
 " rubocop current file
@@ -199,3 +199,6 @@ nnoremap <BS> :A<CR>
 
 " vim-fzf
 nnoremap <C-f> :Buffers<CR>
+
+" experiment
+nnoremap <TAB> :tabn<CR>
