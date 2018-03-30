@@ -6,4 +6,6 @@ $if mode=vi
   "G": end-of-history
   set keymap vi-insert
   "jk": vi-movement-mode
+  "\C-p": history-search-backward
+  "\C-n": history-search-forward
 $endif
