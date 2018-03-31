@@ -75,11 +75,11 @@ set listchars=tab:▸\ ,eol:¬
 " change mapleader to something less carpal tunnel inducing
 let mapleader=" "
 
-" Shortcut to rapidly toggle 'set list'
+" toggle for list
 nmap <leader>0 :set list!<CR>
 
-" having said that...let's always show whitespace.
-set list!
+" default to show whitespace
+set list
 
 " Invisitble character colors
 highlight NonText guifg=#4a4a59
@@ -95,7 +95,7 @@ syntax enable
 set background=dark
 set t_Co=256
 let g:solarized_termcolors=256
-colorscheme grayorange
+" colorscheme grayorange
 
 " kind of a catch-all to get indentation at 2 spaces. having trouble otherwise
 set softtabstop=2
@@ -151,6 +151,7 @@ set grepprg=ack\ --nogroup\ $*
 
 " nicer formatting for text and md files 
 autocmd Filetype markdown set nonumber
+autocmd Filetype markdown set nolist
 autocmd BufRead,BufNewFile *.trc set filetype=strace
 autocmd BufRead,BufNewFile *.es6 set filetype=javascript
 autocmd BufRead,BufNewFile *.nghtml set filetype=html
