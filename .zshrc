@@ -1,6 +1,6 @@
 export ZSH=/Users/jwhiteman/.oh-my-zsh
 
-ZSH_THEME="powerlevel9k/powerlevel9k"
+ZSH_THEME="robbyrussell"
 
 EDITOR='vim'
 export EDITOR
@@ -34,7 +34,6 @@ export PATH=$PATH:$HOME/bin
 
 source ~/.zsh-secrets
 source ~/.zsh-vim
-source ~/.zsh-theme
 
 vimfzf() {
   vim $(fzf)
