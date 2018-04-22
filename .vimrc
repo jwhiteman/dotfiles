@@ -198,7 +198,7 @@ nnoremap <TAB> :A<CR>
 " vim-fzf
 nnoremap <C-f> :Buffers<CR>
 
-" TODO: dry these two up
+" TODO: make these two less boneheaded
 function EncryptMe()
   let nfile = expand("%") . ".enc"
   let ofile = expand("%")
