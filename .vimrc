@@ -198,25 +198,38 @@ nnoremap <TAB> :A<CR>
 " vim-fzf
 nnoremap <C-f> :Buffers<CR>
 
-" FIXME: exit when openssl has exit code other than 0
+" TODO: dry these two up
 function EncryptMe()
   let nfile = expand("%") . ".enc"
   let ofile = expand("%")
 
   execute "!openssl enc -aes-256-cbc -salt -in " . ofile . " -out " . nfile
-  :bd!
-  execute "!rm " . ofile
-  execute ":e " . nfile
+
+  if v:shell_error
+    return -1
+  else
+    :bd!
+    execute "!rm " . ofile
+    execute ":e " . nfile
+  endif
 endfunction
 
 function DecryptMe()
   let nfile = split(expand("%"), ".enc")[0]
   let ofile = expand("%")
 
+  " openssl doesn't take -out here?
   execute "!openssl enc -d -aes-256-cbc -in " . ofile . " > " . nfile
-  :bd!
-  execute "!rm " . ofile
-  execute ":e " . nfile
+
+  if v:shell_error
+    execute "!rm " . nfile
+    echom "decryption failed"
+    return -1
+  else
+    :bd!
+    execute "!rm " . ofile
+    execute ":e " . nfile
+  endif
 endfunction
 
 command ENC call EncryptMe()
