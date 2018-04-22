@@ -198,7 +198,7 @@ nnoremap <TAB> :A<CR>
 " vim-fzf
 nnoremap <C-f> :Buffers<CR>
 
-" FIXME: make these two less boneheaded
+" FIXME: exit when openssl has exit code other than 0
 function EncryptMe()
   let nfile = expand("%") . ".enc"
   let ofile = expand("%")
