@@ -8,8 +8,7 @@
 " C-u - scroll up (fast)
 " C-i - (*) same as tab (?)
 " C-o - go to N older entry in jump list (?)
-" C-p - [OVERRIDE] :bd!
-"     - original: same as 'k'
+" C-p - original: same as 'k'
 "     - original: also for control flow (?)
 " C-[ - (*) not used
 " C-] - go to tag
@@ -56,9 +55,6 @@ call pathogen#helptags()
 set number
 set relativenumber
 
-" delete buffer
-nnoremap <C-p> <esc>:bd!<cr>
-
 " easier cycling through buffers
 nnoremap <C-j> :bprev<cr>
 nnoremap <C-k> :bnext<cr>
@@ -95,7 +91,8 @@ syntax enable
 set background=dark
 set t_Co=256
 let g:solarized_termcolors=256
-" colorscheme grayorange
+colorscheme grayorange
+"colorscheme solarized
 
 " kind of a catch-all to get indentation at 2 spaces. having trouble otherwise
 set softtabstop=2
@@ -179,15 +176,12 @@ nnoremap <leader>9 :0r !pbid<cr> A
 nnoremap <leader>ss :set spell!<CR>
 
 " todos
-nnoremap <leader>td :vsplit ~/Documents/Text/todo.md<CR>
-nnoremap <leader>wtd :vsplit ~/Documents/Text/work-todo.md<CR>
-nnoremap <leader>le :vsplit ~/Documents/Text/learning.md<CR>
+nnoremap <leader>td :e ~/Documents/Text/todo.md<CR>
+nnoremap <leader>wtd :e ~/Documents/Text/work-todo.md<CR>
+nnoremap <leader>le :e ~/Documents/Text/learning.md<CR>
 
-" rubocop current file
+" rubocop cu
 nnoremap <leader>rc :!rubocop %<cr>
-
-" TODO: can't remember what this is for. airline?
-set laststatus=2
 
 " line to show where column 80 is
 set colorcolumn=80
@@ -195,12 +189,35 @@ set colorcolumn=80
 " make fvf work
 set rtp+=/usr/local/opt/fzf
 
+" delete buffer
+nnoremap <BS> :bd!<CR>
+
 " rails-vim toggle alternate file (see projections.json)
-nnoremap <BS> :A<CR>
+nnoremap <TAB> :A<CR>
 
 " vim-fzf
 nnoremap <C-f> :Buffers<CR>
 
-" experiment
-nnoremap <TAB> :tabn<CR>
+" FIXME: make these two less boneheaded
+function EncryptMe()
+  let nfile = expand("%") . ".enc"
+  let ofile = expand("%")
 
+  execute "!openssl enc -aes-256-cbc -salt -in " . ofile . " -out " . nfile
+  :bd!
+  execute "!rm " . ofile
+  execute ":e " . nfile
+endfunction
+
+function DecryptMe()
+  let nfile = split(expand("%"), ".enc")[0]
+  let ofile = expand("%")
+
+  execute "!openssl enc -d -aes-256-cbc -in " . ofile . " > " . nfile
+  :bd!
+  execute "!rm " . ofile
+  execute ":e " . nfile
+endfunction
+
+command ENC call EncryptMe()
+command DENC call DecryptMe()
