@@ -4,4 +4,4 @@
 
 set -e
 
-eval "vim $(git status | grep modified | cut -d ':' -f2 | xargs)"
+eval "nvim $(git status | grep modified | cut -d ':' -f2 | xargs)"

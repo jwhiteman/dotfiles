@@ -88,10 +88,10 @@ set noswapfile
 syntax enable
 
 " theme
-set background=dark
-set t_Co=256
-let g:solarized_termcolors=256
-colorscheme grayorange
+"set background=dark
+"set t_Co=256
+"let g:solarized_termcolors=256
+"colorscheme grayorange
 "colorscheme solarized
 
 " kind of a catch-all to get indentation at 2 spaces. having trouble otherwise
