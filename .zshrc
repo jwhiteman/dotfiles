@@ -2,14 +2,14 @@ export ZSH=/Users/jwhiteman/.oh-my-zsh
 
 ZSH_THEME="robbyrussell"
 
-EDITOR='nvim'
+EDITOR='vim'
 export EDITOR
 
 alias cdk="cd ~/Desktop"
 alias o="open ."
 
-alias td="nvim ~/Documents/Text/todo.md"
-alias wtd="nvim ~/Documents/Text/work-todo.md"
+alias td="vim ~/Documents/Text/todo.md"
+alias wtd="vim ~/Documents/Text/work-todo.md"
 
 plugins=(git)
 
@@ -36,7 +36,7 @@ source ~/.zsh-secrets
 source ~/.zsh-vim
 
 vimfzf() {
-  nvim $(fzf)
+  vim $(fzf)
 }
 
 alias v="vimfzf"

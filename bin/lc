@@ -16,4 +16,4 @@ me="$(git config user.email)"
 rev="$(lastrev $me)"
 files="$(filesforrev $rev | tr '\n' ' ')"
 
-nvim ${files}
+vim ${files}

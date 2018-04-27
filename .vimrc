@@ -178,6 +178,7 @@ nnoremap <leader>ss :set spell!<CR>
 " todos
 nnoremap <leader>td :e ~/Documents/Text/todo.md<CR>
 nnoremap <leader>wtd :e ~/Documents/Text/work-todo.md<CR>
+nnoremap <leader>wan :e ~/Documents/Text/wanted.md<CR>
 nnoremap <leader>le :e ~/Documents/Text/learning.md<CR>
 
 " rubocop cu
@@ -199,7 +200,8 @@ nnoremap <TAB> :A<CR>
 nnoremap <C-f> :Buffers<CR>
 
 " TODO: make these two less boneheaded
-function EncryptMe()
+" FIXME: fix these for nvim
+function! EncryptMe()
   let nfile = expand("%") . ".enc"
   let ofile = expand("%")
 
@@ -214,7 +216,7 @@ function EncryptMe()
   endif
 endfunction
 
-function DecryptMe()
+function! DecryptMe()
   let nfile = split(expand("%"), ".enc")[0]
   let ofile = expand("%")
 
@@ -232,5 +234,5 @@ function DecryptMe()
   endif
 endfunction
 
-command ENC call EncryptMe()
-command DENC call DecryptMe()
+command! ENC call EncryptMe()
+command! DENC call DecryptMe()
