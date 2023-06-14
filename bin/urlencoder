@@ -1,0 +1,28 @@
+#!/usr/bin/env ruby
+require 'cgi'
+require 'optparse'
+
+options = {}
+OptionParser.new do |opts|
+  opts.banner = "Usage: encode.rb [-f] <string>"
+
+  opts.on("-f", "--force", "Force encoding of dots") do |f|
+    options[:force] = f
+  end
+end.parse!
+
+def encode_string(s, flag=false)
+  result = CGI.escape(s)
+  if flag
+    result.gsub!('.', '%2E')
+  end
+  result
+end
+
+if ARGV.empty?
+  puts "Usage: encode.rb [-f] <string>"
+  exit 1
+end
+
+s = ARGV.join(' ')
+puts encode_string(s, options[:force])
