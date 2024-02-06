@@ -112,8 +112,8 @@ nnoremap ,, <C-w><C-w>
 " rspec.vim:
 " (s)pec (f)ile
 " (s)pec (t)est
-nnoremap <Leader>sf :call RunCurrentSpecFile()<CR>
-nnoremap <Leader>st :call RunNearestSpec()<CR>
+" nnoremap <Leader>sf :call RunCurrentSpecFile()<CR>
+" nnoremap <Leader>st :call RunNearestSpec()<CR>
 
 " vim-extest:
 " (e)lixir (f)ile
@@ -124,18 +124,22 @@ map <leader>et :ExTestRunCurrentOrLast<CR>
 " ruby xunit:
 " (r)uby (f)ile
 " (r)uby (t)est
+nnoremap <leader>mk :!make<cr>
 nnoremap <leader>rf :!ruby -Itest %<cr>
 nnoremap <leader>rt :call RunNearestTest()<cr>
 
 function! RunNearestTest()
   execute ":!m " . @% . ":" . line(".")
 endfunction
+" nnoremap <leader>sf :!csi %<cr>
+
 
 " search
 nnoremap <silent> <Leader>k :Files<CR>
 
 " Abbreviations
 ia bp binding.pry
+ia lmm λ
 ia teh the
 
 " easy .vimrc editing
@@ -193,46 +197,14 @@ set rtp+=/usr/local/opt/fzf
 " delete buffer
 nnoremap <BS> :bd!<CR>
 
+" NOTE: this trigger fzf instead, which could be fine. pdi
 " rails-vim toggle alternate file (see projections.json)
-nnoremap <TAB> :A<CR>
+" nnoremap <TAB> :A<CR>
 
 " vim-fzf
 nnoremap <C-f> :Buffers<CR>
 
-" TODO: make these two less boneheaded
-" FIXME: fix these for nvim
-function! EncryptMe()
-  let nfile = expand("%") . ".enc"
-  let ofile = expand("%")
-
-  execute "!openssl enc -aes-256-cbc -salt -in " . ofile . " -out " . nfile
-
-  if v:shell_error
-    return -1
-  else
-    :bd!
-    execute "!rm " . ofile
-    execute ":e " . nfile
-  endif
-endfunction
-
-function! DecryptMe()
-  let nfile = split(expand("%"), ".enc")[0]
-  let ofile = expand("%")
-
-  " openssl doesn't take -out here?
-  execute "!openssl enc -d -aes-256-cbc -in " . ofile . " > " . nfile
-
-  if v:shell_error
-    execute "!rm " . nfile
-    echom "decryption failed"
-    return -1
-  else
-    :bd!
-    execute "!rm " . ofile
-    execute ":e " . nfile
-  endif
-endfunction
-
-command! ENC call EncryptMe()
-command! DENC call DecryptMe()
+" c editing: kernel coding standards
+autocmd FileType c setlocal tabstop=8
+autocmd FileType c setlocal shiftwidth=8
+autocmd FileType c setlocal softtabstop=8
