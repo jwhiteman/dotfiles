@@ -43,17 +43,20 @@
 " <Space> - (*) same as 'l'
 set nocompatible
 
-" back to pathogen.
-execute pathogen#infect()
 syntax on
+
+call plug#begin()
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'tpope/vim-surround'
+Plug 'slim-template/vim-slim'
+call plug#end()
+
 filetype plugin indent on
 
-" build help tags
-call pathogen#helptags()
-
 " show line numbers (hybrid)
-set number
 set relativenumber
+set number
 
 " easier cycling through buffers
 nnoremap <C-j> :bprev<cr>
@@ -112,8 +115,8 @@ nnoremap ,, <C-w><C-w>
 " rspec.vim:
 " (s)pec (f)ile
 " (s)pec (t)est
-" nnoremap <Leader>sf :call RunCurrentSpecFile()<CR>
-" nnoremap <Leader>st :call RunNearestSpec()<CR>
+nnoremap <Leader>sf :call RunCurrentSpecFile()<CR>
+nnoremap <Leader>st :call RunNearestSpec()<CR>
 
 " vim-extest:
 " (e)lixir (f)ile
@@ -124,15 +127,13 @@ map <leader>et :ExTestRunCurrentOrLast<CR>
 " ruby xunit:
 " (r)uby (f)ile
 " (r)uby (t)est
-nnoremap <leader>mk :!make<cr>
 nnoremap <leader>rf :!ruby -Itest %<cr>
 nnoremap <leader>rt :call RunNearestTest()<cr>
+nnoremap <leader>pi :!racket -I pie %<cr>
 
 function! RunNearestTest()
   execute ":!m " . @% . ":" . line(".")
 endfunction
-" nnoremap <leader>sf :!csi %<cr>
-
 
 " search
 nnoremap <silent> <Leader>k :Files<CR>
@@ -181,30 +182,22 @@ nnoremap <leader>ss :set spell!<CR>
 
 " todos
 nnoremap <leader>td :e ~/Documents/Text/todo.md<CR>
-nnoremap <leader>wtd :e ~/Documents/Text/work-todo.md<CR>
-nnoremap <leader>wan :e ~/Documents/Text/wanted.md<CR>
-nnoremap <leader>le :e ~/Documents/Text/learning.md<CR>
 
 " rubocop cu
 nnoremap <leader>rc :!rubocop %<cr>
 
 " line to show where column 80 is
-set colorcolumn=80
+" set colorcolumn=80
 
 " make fvf work
-set rtp+=/usr/local/opt/fzf
+" set rtp+=/usr/bin/fzf
+" set rtp+=~/.fzf
 
 " delete buffer
 nnoremap <BS> :bd!<CR>
 
-" NOTE: this trigger fzf instead, which could be fine. pdi
 " rails-vim toggle alternate file (see projections.json)
-" nnoremap <TAB> :A<CR>
+nnoremap <TAB> :A<CR>
 
 " vim-fzf
 nnoremap <C-f> :Buffers<CR>
-
-" c editing: kernel coding standards
-autocmd FileType c setlocal tabstop=8
-autocmd FileType c setlocal shiftwidth=8
-autocmd FileType c setlocal softtabstop=8
