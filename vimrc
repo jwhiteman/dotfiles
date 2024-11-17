@@ -16,6 +16,7 @@ set ignorecase
 set wildignore+=*.beam,*/_build/*,*/node_modules/*
 set grepprg=ack\ --nogroup\ $*
 set colorcolumn=90
+set background=dark
 
 syntax on
 syntax enable
@@ -26,8 +27,14 @@ Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'hashivim/vim-terraform'
-Plug 'slim-template/vim-slim'
+Plug 'morhetz/gruvbox'
 call plug#end()
+
+colorscheme gruvbox
+
+" for light theme:
+" set background=light
+" colorscheme PaperColor
 
 filetype plugin indent on
 
@@ -48,6 +55,7 @@ nnoremap <leader>rt :call RunNearestTest()<cr>
 nnoremap <leader>ev :vsplit ~/.vimrc<cr>
 nnoremap <leader>sv :source ~/.vimrc<cr>
 nnoremap <C-f> :Ag<CR>
+nnoremap <C-c> :Commits<CR>
 nnoremap <silent> <Leader>k :Files<CR>
 
 nmap <leader>0 :set list!<CR>
