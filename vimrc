@@ -1,7 +1,7 @@
 set nocompatible
 set cursorline
 set ruler
-set listchars=tab:▸\ ,eol:¬
+set listchars=tab:.\ ,eol:¬
 set relativenumber
 set number
 set list
@@ -30,11 +30,10 @@ Plug 'hashivim/vim-terraform'
 Plug 'morhetz/gruvbox'
 call plug#end()
 
-colorscheme gruvbox
-
-" for light theme:
+" for light theme (example):
 " set background=light
 " colorscheme PaperColor
+colorscheme gruvbox
 
 filetype plugin indent on
 
@@ -67,6 +66,8 @@ map <leader>gc :Git commit<cr>
 ia bp binding.pry
 ia lmm λ
 ia teh the
+ia skci [skip ci]
+ia shrugg ¯\_(ツ)_/¯
 
 highlight NonText guifg=#4a4a59
 highlight SpecialKey guifg=#4a4a59
@@ -81,3 +82,14 @@ autocmd BufRead,BufNewFile *.jbuilder set filetype=ruby
 function! RunNearestTest()
   execute ":!m " . @% . ":" . line(".")
 endfunction
+
+" go 2025
+function! GoFileSettings()
+    setlocal tabstop=4
+    setlocal shiftwidth=4
+    setlocal softtabstop=4
+    setlocal noexpandtab
+    setlocal listchars=tab:\ \ 
+endfunction
+
+autocmd FileType go call GoFileSettings()
